@@ -49,9 +49,9 @@ else:
 
 
 if os.getenv('HOWDOI_DISABLE_SSL'):  # Set http instead of https
-    SEARCH_URL = 'http://www.google.com/search?q=site:{0}%20{1}'
+    SEARCH_URL = 'http://search.aol.com/search?q=site:{0}%20{1}'
 else:
-    SEARCH_URL = 'https://www.google.com/search?q=site:{0}%20{1}'
+    SEARCH_URL = 'http://search.aol.com/search?q=site%3A{0}+{1}'
 
 URL = os.getenv('HOWDOI_URL') or 'stackoverflow.com'
 
@@ -97,8 +97,8 @@ def is_question(link):
 def get_links(query):
     result = get_result(SEARCH_URL.format(URL, url_quote(query)))
     html = pq(result)
-    return [a.attrib['href'] for a in html('.l')] or \
-        [a.attrib['href'] for a in html('.r')('a')]
+    return [a.attrib['href'] for a in html('a')('.find')] or \
+           [a.attrib['href'] for a in html('.r')('a')]
 
 
 def get_link_at_pos(links, position):

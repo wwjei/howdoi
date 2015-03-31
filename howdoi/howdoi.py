@@ -51,7 +51,7 @@ else:
 if os.getenv('HOWDOI_DISABLE_SSL'):  # Set http instead of https
     SEARCH_URL = 'http://search.aol.com/search?q=site:{0}%20{1}'
 else:
-    SEARCH_URL = 'http://search.aol.com/search?q=site%3A{0}+{1}'
+    SEARCH_URL = 'http://search.aol.com/aol/search?s_it=topsearchbox.search&v_t=opensearch&q=stackoverflow+{1}'
 
 URL = os.getenv('HOWDOI_URL') or 'stackoverflow.com'
 
